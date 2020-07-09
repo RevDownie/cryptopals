@@ -25,7 +25,7 @@ pub fn solve() -> String {
     //XOR of decrypted and encrypted value will give the key
     //We try for all the most common keys and filter out any results that
     //contain non printable characters
-    let most_common_ascii_decrypted = "etaoin shrdlu".as_bytes();
+    let most_common_ascii_decrypted = b"etaoin shrdlu";
     let mut decrypted_bytes: Vec<u8> = Vec::with_capacity(encrypted.len());
     for c in most_common_ascii_decrypted.iter() {
         let key = most_common_ascii_encrypted ^ c;
