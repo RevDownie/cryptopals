@@ -1,6 +1,7 @@
 #![feature(iter_map_while)]
 
 mod base_converter;
+mod decrypter;
 mod set1;
 
 /// Cryptopals challenges https://cryptopals.com
