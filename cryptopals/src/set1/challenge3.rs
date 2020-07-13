@@ -1,5 +1,5 @@
 use crate::base_converter::hex_decode;
-use crate::decrypter::single_char_xor_plaintext_decrypt;
+use crate::xor_decrypter::single_char_xor_plaintext_decrypt;
 
 /// Find the xor 'key' by 'scoring' plain text (char frequency, etc) and decrypt
 ///
