@@ -11,5 +11,6 @@ fn main() {
     println!("\t{}", set1::challenge1::solve());
     println!("\t{}", set1::challenge2::solve());
     println!("\t{}", set1::challenge3::solve());
+    println!("\t{}", set1::challenge4::solve());
     println!("=== Finished");
 }
