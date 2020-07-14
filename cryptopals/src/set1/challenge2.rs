@@ -1,5 +1,4 @@
-use crate::base_converter::hex_decode;
-use crate::base_converter::hex_encode;
+use crate::hex_converter::*;
 
 /// Convert xor 2 hex strings
 ///

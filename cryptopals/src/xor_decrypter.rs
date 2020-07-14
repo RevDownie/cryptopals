@@ -3,7 +3,7 @@ static PRINTABLE_ASCII_SCORES: [u32; 256] = init_scores_table();
 /// Attempts to decrypt the given bytes assumign a single character xor key
 /// and that the output is plaintext.
 ///
-pub fn single_char_xor_plaintext_decrypt(encrypted: &[u8]) -> Option<(Vec<u8>, u32)> {
+pub fn single_char_xor_plaintext_decrypt(encrypted: &[u8]) -> Option<(Vec<u8>, u32, u8)> {
     //Count ascii character occurrences
     let mut counts: [u8; 256] = [0; 256];
     for b in encrypted.iter() {
@@ -26,6 +26,7 @@ pub fn single_char_xor_plaintext_decrypt(encrypted: &[u8]) -> Option<(Vec<u8>, u
     let mut decrypted_bytes: Vec<u8> = Vec::with_capacity(encrypted.len());
     let mut decrypted_bytes_best_score: Vec<u8> = Vec::with_capacity(encrypted.len());
     let mut best_score = 0;
+    let mut best_key = 0;
 
     for c in 32..=126 {
         let key = most_common_ascii_encrypted ^ c;
@@ -37,6 +38,7 @@ pub fn single_char_xor_plaintext_decrypt(encrypted: &[u8]) -> Option<(Vec<u8>, u
             let score = freq_score(&decrypted_bytes);
             if score >= best_score {
                 best_score = score;
+                best_key = key;
                 decrypted_bytes_best_score.clear();
                 decrypted_bytes_best_score.extend(&decrypted_bytes);
             }
@@ -44,7 +46,7 @@ pub fn single_char_xor_plaintext_decrypt(encrypted: &[u8]) -> Option<(Vec<u8>, u
     }
 
     if !decrypted_bytes_best_score.is_empty() {
-        Some((decrypted_bytes_best_score, best_score))
+        Some((decrypted_bytes_best_score, best_score, best_key))
     } else {
         None
     }

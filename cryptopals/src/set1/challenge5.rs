@@ -1,4 +1,4 @@
-use crate::base_converter::hex_encode;
+use crate::hex_converter::hex_encode;
 use crate::xor_encrypter::xor_encrypt;
 
 /// Repeating XOR key

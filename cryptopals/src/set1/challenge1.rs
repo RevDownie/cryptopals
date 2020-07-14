@@ -1,5 +1,5 @@
-use crate::base_converter::base64_encode;
-use crate::base_converter::hex_decode;
+use crate::base64_converter::base64_encode;
+use crate::hex_converter::hex_decode;
 
 /// Convert hex to base64
 ///

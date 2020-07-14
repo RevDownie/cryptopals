@@ -1,4 +1,4 @@
-use crate::base_converter::hex_decode;
+use crate::hex_converter::hex_decode;
 use crate::xor_decrypter::single_char_xor_plaintext_decrypt;
 use std::fs::File;
 use std::io::{self, BufRead};
@@ -11,8 +11,8 @@ pub fn solve() -> String {
 
     let best_decrypted = encoded_lines
         .filter_map(|e| single_char_xor_plaintext_decrypt(&hex_decode(&e.unwrap()).unwrap()))
-        .max_by_key(|(_, s)| *s);
+        .max_by_key(|(_, s, _)| *s);
 
-    let (text, _) = best_decrypted.unwrap();
+    let (text, _, _) = best_decrypted.unwrap();
     String::from_utf8(text).unwrap()
 }
