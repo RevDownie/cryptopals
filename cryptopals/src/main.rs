@@ -17,5 +17,6 @@ fn main() {
     println!("\t{}", set1::challenge4::solve().replace('\n', ""));
     println!("\t{}", set1::challenge5::solve());
     println!("\t{}", set1::challenge6::solve().replace('\n', ""));
+    println!("\t{}", set1::challenge7::solve().replace('\n', ""));
     println!("=== Finished");
 }
