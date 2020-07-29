@@ -15,8 +15,8 @@ pub fn solve() -> String {
 
     //Convert the 16 bytes into a 128 bit int for quicker comparison and sort them so
     //we can count the number of matching pairs just by counting the run lengths
-    let line_block_ids: Vec<Vec<u128>> = decoded_lines.map(|line| pack_128_chunks(&line)).collect();
-    let num_repeating_blocks = line_block_ids.iter().map(|ids| count_runs(&*ids));
+    let line_block_ids = decoded_lines.map(|line| pack_128_chunks(&line));
+    let num_repeating_blocks = line_block_ids.map(|ids| count_runs(&*ids));
 
     //The line with the most repeating blocks is likely ECB encrypted
     let (idx, _) = num_repeating_blocks
