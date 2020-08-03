@@ -3,7 +3,9 @@
 mod base64_converter;
 mod hamming;
 mod hex_converter;
+mod padding;
 mod set1;
+mod set2;
 mod xor_decrypter;
 mod xor_encrypter;
 
@@ -19,5 +21,9 @@ fn main() {
     println!("\t{}", set1::challenge6::solve().replace('\n', ""));
     println!("\t{}", set1::challenge7::solve().replace('\n', ""));
     println!("\t{}", set1::challenge8::solve());
+
+    println!("=== Set 2");
+    println!("\t{}", set2::challenge9::solve());
+
     println!("=== Finished");
 }
